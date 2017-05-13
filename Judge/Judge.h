@@ -12,7 +12,7 @@
 #define MAKE_DIR_FAILED (-7)
 #define DELETE_FILE_FAILED (-8)
 #define HAVE_NOT_INITED (-9)
-#define TEST_SUCCESS 1
+#define TEST_SUCCESS (1)
 
 class Judge
 {
