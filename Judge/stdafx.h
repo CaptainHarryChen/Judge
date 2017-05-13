@@ -7,9 +7,15 @@
 
 #include "targetver.h"
 
-#include <stdio.h>
+#include <windows.h>
+#include <cstdio>
+#include <ctime>
+#include <cstring>
+#include <psapi.h>
+#include <direct.h>
 #include <tchar.h>
-
+#include <conio.h>
+#include <locale.h>
 
 
 // TODO: 在此处引用程序需要的其他头文件
