@@ -60,7 +60,7 @@ protected:
 
 struct Judge::TEST_INFORMATION
 {
-	const int lsize = 2048;
+	int lsize;
 	int tTime;
 	long long tMemory;
 	wchar_t log[2048];

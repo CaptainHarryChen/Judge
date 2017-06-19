@@ -314,6 +314,7 @@ int Judge::run_test(LPCWSTR in, LPCWSTR out, PTINFO result)
 	PROCESS_INFORMATION pi;
 	ZeroMemory(&pi, sizeof pi);
 	ZeroMemory(result, sizeof(TINFO));
+	result->lsize = 2048;
 	//ÈÕÖ¾Êä³ö
 	wchar_t *prc = result->log, *p_end = result->log + result->lsize - 1;
 	prc += swprintf_s(prc, p_end-prc, TEXT("{%s %s}\n"), in, out);

@@ -37,7 +37,7 @@ bool UI_cmd::query_config()
             c=_getch();
         }
         wprintf(TEXT("\n"));
-        if(c=='Y')
+        if(c=='Y'||c=='y')
             auto_input=true;
     }
     if(!auto_input)
