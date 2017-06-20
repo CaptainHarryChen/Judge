@@ -11,7 +11,23 @@ UI_cmd::~UI_cmd()
 
 int UI_cmd::Run_Judge()
 {
-    wprintf(TEXT("这是一个用于测试程序的Judge。\n请将本程序和待测试程序放在测试数据文件夹里。\n温馨提示：待测试程序不需要文件输入输出。\n\n"));
+    wprintf(TEXT("本应用用于测试竞赛题目程序。\n温馨提示：待测试程序不需要文件输入输出。\n\n"));
+
+	wchar_t stpath[MAX_PATH];
+	wprintf(TEXT("请输入起始路径："));
+	while (true)
+	{
+		fgetws(stpath, MAX_PATH, stdin);
+		if (stpath[wcslen(stpath) - 1] == '\n')
+			stpath[wcslen(stpath) - 1] = 0;
+		if (_waccess(stpath, 0) == 0)
+			break;
+		else
+			wprintf(TEXT("路径不存在，请重新输入："));
+	}
+	if (!SetCurrentDirectory(stpath))
+		return CONFIG_READ_FAILED;
+	wcscpy_s(path, stpath);
 
     if(!query_config())
     {

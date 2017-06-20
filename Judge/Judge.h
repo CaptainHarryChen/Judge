@@ -21,7 +21,6 @@ public:
 	typedef TEST_INFORMATION TINFO, *PTINFO;
 
 private:
-	wchar_t path[MAX_PATH];
 	wchar_t ini[MAX_PATH];
 	HANDLE h_file;
 	bool have_init;
@@ -34,6 +33,7 @@ private:
 
 protected:
 	//…Ë÷√–≈œ¢
+	wchar_t path[MAX_PATH];
 	wchar_t user_program[MAX_PATH];
 	wchar_t input_data_form[MAX_PATH];
 	wchar_t output_data_form[MAX_PATH];
