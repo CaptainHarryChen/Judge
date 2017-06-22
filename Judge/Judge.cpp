@@ -313,6 +313,8 @@ int Judge::run_test(LPCWSTR in, LPCWSTR out, PTINFO result)
 	si.wShowWindow = SW_HIDE;
 	PROCESS_INFORMATION pi;
 	ZeroMemory(&pi, sizeof pi);
+	if(result==NULL)
+		return 
 	ZeroMemory(result, sizeof(TINFO));
 	result->lsize = 2048;
 	//хуж╬йДЁЖ

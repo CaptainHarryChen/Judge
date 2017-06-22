@@ -26,47 +26,77 @@ int UI_cmd::Run_Judge()
 
 bool UI_cmd::query_config()
 {
-    bool auto_input=0;
-    if(load_config())
-    {
-        wprintf(TEXT("是否使用以下设置(Y/N)：\n待测程序：%s\n输入文件：%s\n输出文件：%s\n时间限制：%dms\n内存限制：%dKB\n"),user_program,input_data_form,output_data_form,time_limit,memory_limit);
-        wchar_t c=_getch();
-        while(c!='Y'&&c!='N'&&c!='y'&&c!='n')
-        {
-            wprintf(TEXT("输入有误，请重新输入(Y/N)："));
-            c=_getch();
-        }
-        wprintf(TEXT("\n"));
-        if(c=='Y'||c=='y')
-            auto_input=true;
-    }
-    if(!auto_input)
-    {
-        wchar_t _user_program[MAX_PATH],_input_data_form[MAX_PATH],_output_data_form[MAX_PATH],s[20];
-        int _tl,_ml;
-        wprintf(TEXT("请输入你的exe文件名："));
-        fgetws(_user_program,MAX_PATH,stdin);
-        int len=wcslen(_user_program)-1;
-        if(_user_program[len]=='\n')_user_program[len]='\0';
-        wprintf(TEXT("请输入输入数据文件名（*为通配符，只允许有一个通配符）："));
-        fgetws(_input_data_form,MAX_PATH,stdin);
-        len=wcslen(_input_data_form)-1;
-        if(_input_data_form[len]=='\n')_input_data_form[len]='\0';
-        wprintf(TEXT("请输入输出数据文件名（*为通配符，只允许有一个通配符）："));
-        fgetws(_output_data_form,MAX_PATH,stdin);
-        len=wcslen(_output_data_form)-1;
-        if(_output_data_form[len]=='\n')_output_data_form[len]='\0';
-        wprintf(TEXT("请输入时间限制(ms)："));
-        fgetws(s,20,stdin);
-        swscanf_s(s, TEXT("%d"),&_tl);
-        wprintf(TEXT("请输入内存限制(MB)："));
-        fgetws(s,20,stdin);
-        swscanf_s(s, TEXT("%d"),&_ml);
-        _ml*=1024;
-        if(!load_config(_user_program,_input_data_form,_output_data_form,_tl,_ml))
-            return false;
-        wprintf(TEXT("\n"));
-    }
+	int auto_input = -1;
+	if (load_config())
+	{
+		wprintf(TEXT("是否使用以下设置(Y/N)：\n1.待测程序：%s\n2.输入文件：%s\n3.输出文件：%s\n4.时间限制：%dms\n5.内存限制：%dKB\n"), user_program, input_data_form, output_data_form, time_limit, memory_limit);
+		wchar_t c = _getch();
+		while (c != 'Y'&&c != 'N'&&c != 'y'&&c != 'n')
+		{
+			wprintf(TEXT("输入有误，请重新输入(Y/N)："));
+			c = _getch();
+		}
+		wprintf(TEXT("\n"));
+		if (c == 'Y' || c == 'y')
+			auto_input = 1;
+		else
+			auto_input = 0;
+	}
+	if (auto_input == -1)
+	{
+		wchar_t _user_program[MAX_PATH], _input_data_form[MAX_PATH], _output_data_form[MAX_PATH], s[20];
+		int _tl, _ml;
+		wprintf(TEXT("请输入你的exe文件名："));
+		fgetws(_user_program, MAX_PATH, stdin);
+		int len = wcslen(_user_program) - 1;
+		if (_user_program[len] == '\n')_user_program[len] = '\0';
+		wprintf(TEXT("请输入输入数据文件名（*为通配符，只允许有一个通配符）："));
+		fgetws(_input_data_form, MAX_PATH, stdin);
+		len = wcslen(_input_data_form) - 1;
+		if (_input_data_form[len] == '\n')_input_data_form[len] = '\0';
+		wprintf(TEXT("请输入输出数据文件名（*为通配符，只允许有一个通配符）："));
+		fgetws(_output_data_form, MAX_PATH, stdin);
+		len = wcslen(_output_data_form) - 1;
+		if (_output_data_form[len] == '\n')_output_data_form[len] = '\0';
+		wprintf(TEXT("请输入时间限制(ms)："));
+		fgetws(s, 20, stdin);
+		swscanf_s(s, TEXT("%d"), &_tl);
+		wprintf(TEXT("请输入内存限制(MB)："));
+		fgetws(s, 20, stdin);
+		swscanf_s(s, TEXT("%d"), &_ml);
+		_ml *= 1024;
+		if (!load_config(_user_program, _input_data_form, _output_data_form, _tl, _ml))
+			return false;
+		wprintf(TEXT("\n"));
+	}
+	else if (auto_input == 0)
+	{
+		while(1)
+		{
+			wprintf(TEXT("输入要更改的设置的编号："));
+			int id;
+			while (1)
+			{
+				wchar_t input[10];
+				fgetws(input, 10, stdin);
+				int len = wcslen(input);
+				if (input[len - 1] == '\n')
+					input[--len] = 0;
+				bool suc = true;
+				for (int i = 0; i < len; i++)
+					if (isxdigit(input[i]))
+					{
+						wprintf(TEXT("输入有误，请重新输入："));
+						suc = false;
+						break;
+					}
+				if (suc)
+				{
+					if(wcscmp(input,'Y')
+				}
+			}
+			
+	}
     return true;
 }
 
