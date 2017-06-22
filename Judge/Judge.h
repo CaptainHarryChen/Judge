@@ -14,7 +14,7 @@
 #define HAVE_NOT_INITED (-9)
 #define TEST_SUCCESS (1)
 
-class Judge
+class __declspec(dllexport) Judge
 {
 public:
 	struct TEST_INFORMATION;
