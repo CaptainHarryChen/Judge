@@ -45,6 +45,8 @@ protected:
 	bool load_config();
 	//直接输入设置
 	bool load_config(LPCWSTR, LPCWSTR, LPCWSTR, int, int);
+	//设置起始路径
+	bool set_path(LPWSTR);
 	//查找下一个数据文件
 	bool search_data(LPWSTR, LPWSTR, size_t);
 	//初始化test环境
