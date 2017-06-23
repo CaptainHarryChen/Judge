@@ -43,19 +43,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="psapi.lib" />
+    <Image Include="ico\Captain.ico">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" />
+    <None Include="ReadMe.md" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Judge.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="ico\Captain.ico">
-      <Filter>资源文件</Filter>
-    </Image>
   </ItemGroup>
 </Project>

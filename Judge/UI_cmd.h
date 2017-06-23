@@ -3,7 +3,6 @@
 
 #include "stdafx.h"
 #include "Judge.h"
-#pragma comment(lib,"Judge.lib")
 
 #define JUDGE_SUCCESS 0
 #define CONFIG_READ_FAILED (-1)
