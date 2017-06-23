@@ -25,9 +25,8 @@ int UI_cmd::Run_Judge()
 		else
 			wprintf(TEXT("路径不存在，请重新输入："));
 	}
-	if (!SetCurrentDirectory(stpath))
+	if (!set_path(stpath))
 		return CONFIG_READ_FAILED;
-	wcscpy_s(path, stpath);
 
     if(!query_config())
     {

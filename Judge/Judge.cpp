@@ -187,6 +187,21 @@ bool Judge::load_config(LPCWSTR _user_program, LPCWSTR _input_data_form, LPCWSTR
 	return true;
 }
 
+bool Judge::set_path(LPWSTR stpath)
+{
+	if (!SetCurrentDirectory(stpath))
+		return false;
+	int len = wcslen(stpath);
+	if (stpath[len - 1] == '\n')
+		stpath[--len] = 0;
+	if (stpath[len - 1] != '\\')
+		stpath[len++] = '\\';
+	wcscpy_s(path, stpath);
+	wcscpy_s(ini, path);
+	wcscat_s(ini, TEXT("JudgeFile.ini"));
+	return true;
+}
+
 bool Judge::search_out(LPCWSTR in, LPWSTR out)
 {
 	int st = wcschr(input_data_form, '*') - input_data_form;
