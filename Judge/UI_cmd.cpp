@@ -76,7 +76,7 @@ bool UI_cmd::Judge_program()
     TINFO ti;
     HANDLE houtput=GetStdHandle(STD_OUTPUT_HANDLE);
 	FILE *olog;
-	_wfopen_s(&olog, TEXT("Judge_result.log"), TEXT("w"));
+	_wfopen_s(&olog,TEXT("Judge_result.log"), TEXT("w"));
     Judge::init_test();
     while(Judge::search_data(in,out,MAX_PATH))
     {
