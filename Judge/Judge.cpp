@@ -106,7 +106,8 @@ bool Judge::load_config()
 		if (myname[0] == '\0')return false;
 		hTemp = FindFirstFile(TEXT("*.exe"), &da);
 		while (hTemp != INVALID_HANDLE_VALUE&&wcscmp(myname, da.cFileName) == 0)
-			FindNextFile(hTemp, &da);
+			if (!FindNextFile(hTemp, &da))
+				break;
 		if (hTemp == INVALID_HANDLE_VALUE)return false;
 		wcscpy_s(user_program, da.cFileName);
 	}
